@@ -239,6 +239,11 @@ public class FrameDatos extends javax.swing.JFrame {
                 sizeOfImage1ItemStateChanged(evt);
             }
         });
+        sizeOfImage1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizeOfImage1ActionPerformed(evt);
+            }
+        });
         actionMenuDatos.add(sizeOfImage1);
 
         nameOfImage1.setText("Nombre");
@@ -452,6 +457,12 @@ public class FrameDatos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_greenHist1ItemStateChanged
+
+    private void sizeOfImage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeOfImage1ActionPerformed
+        // TODO add your handling code here:
+        areaImg.enable(true);
+        areaImg.setText(Integer.toString(datos.getAncho()*datos.getLargo()));
+    }//GEN-LAST:event_sizeOfImage1ActionPerformed
 
     public void mouseMoved(MouseEvent evento) {
         if (Coord1.getState() == true) {
