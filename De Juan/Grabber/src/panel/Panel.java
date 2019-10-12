@@ -414,7 +414,7 @@ public class Panel extends javax.swing.JFrame {
 
             datos.setAncho(an);
             datos.setLargo(lar);
-            
+
             for (int i = 0; i <= imagenbuf.getWidth(); i++) {
                 for (int j = 0; j <= imagenbuf.getHeight(); j++) {
                     colorin = new Color(imagenbuf.getRGB(i, j));
@@ -427,11 +427,11 @@ public class Panel extends javax.swing.JFrame {
             datos.setRed(rini);
             datos.setGreen(gini);
             datos.setBlue(bini);
-            
+
             datos.setImagen((Image) bfImageglobal);
 
             this.repaint();
-            
+
         }
 
         FrNvo.setDatos(teVanDatos(datos));
@@ -536,13 +536,13 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_menuMat3x3ActionPerformed
 
     private void menuMat5x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMat5x5ActionPerformed
-         // TODO add your handling code here:
-         aplicarMatriz5x5();
+        // TODO add your handling code here:
+        aplicarMatriz5x5();
     }//GEN-LAST:event_menuMat5x5ActionPerformed
 
     private void menuMat7x7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMat7x7ActionPerformed
-         // TODO add your handling code here:
-         aplicarMatriz7x7();
+        // TODO add your handling code here:
+        aplicarMatriz7x7();
     }//GEN-LAST:event_menuMat7x7ActionPerformed
 
     private void menuIng5x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuIng5x5ActionPerformed
@@ -1750,7 +1750,7 @@ public class Panel extends javax.swing.JFrame {
         int res = jop.showConfirmDialog(null, panel, "Selecionar Filtro 3x3", JOptionPane.WARNING_MESSAGE);
 
         if (res == 0) {
-            
+
             ImageIcon aiuda = new ImageIcon(datos.getImagen().getScaledInstance(labelImg.getWidth(), labelImg.getHeight(), Image.SCALE_SMOOTH));
             labelImg.setIcon(aiuda);
             tempImage = null;
@@ -1764,37 +1764,43 @@ public class Panel extends javax.swing.JFrame {
     private void aplicarMatriz(int mat) {
         switch (mat) {
             case 0:
-                int[][] borde = {{-1, -1, -1},
-                {-1, 8, -1},
-                {-1, -1, -1}};
+                int[][] borde = {
+                    {-1, -1, -1},
+                    {-1, 8, -1},
+                    {-1, -1, -1}};
                 aplicarFiltro(borde);
                 break;
             case 1:
-                int[][] laplace = {{0, -1, 0},
+                int[][] laplace = {
+                {0, -1, 0},
                 {-1, 4, -1},
                 {0, -1, 0}};
                 aplicarFiltro(laplace);
                 break;
             case 2:
-                int[][] sobelHz = {{-1, -1, -1},
+                int[][] sobelHz = {
+                {-1, -2, -1},
                 {0, 0, 0},
-                {1, 1, 1}};
+                {1, 2, 1}};
                 aplicarFiltro(sobelHz);
                 break;
             case 3:
-                int[][] sobelVt = {{-1, 0, 1},
-                {-1, 0, 1},
-                {-1, 0, 1}};
+                int[][] sobelVt = {
+                {25, 10, 30},
+                {-10, -10, -10},
+                {-25, -20, -23}};
                 aplicarFiltro(sobelVt);
                 break;
             case 4:
-                int[][] prewittHz = {{-1, -2, -1},
-                {0, 0, 0},
-                {1, 2, 1}};
+                int[][] prewittHz = {
+                {22, 10, 4},
+                {22, 11, 6},
+                {100, 20, 10}};
                 aplicarFiltro(prewittHz);
                 break;
             case 5:
-                int[][] prewittVt = {{-1, 0, 1},
+                int[][] prewittVt = {
+                {-1, 0, 1},
                 {-2, 0, 2},
                 {-1, 0, 1}};
                 aplicarFiltro(prewittVt);
@@ -2008,10 +2014,10 @@ public class Panel extends javax.swing.JFrame {
             }
         }
         tempImage = (Image) image;
-tempImage = (Image) image;
+        tempImage = (Image) image;
         datos.setImagen(tempImage);
         ImageIcon aiuda = new ImageIcon(datos.getImagen().getScaledInstance(labelImg.getWidth(), labelImg.getHeight(), Image.SCALE_SMOOTH));
-            labelImg.setIcon(aiuda);
+        labelImg.setIcon(aiuda);
         eliminarBarra();
         this.repaint();
     }
@@ -2089,10 +2095,10 @@ tempImage = (Image) image;
             }
         }
         tempImage = (Image) image;
-tempImage = (Image) image;
+        tempImage = (Image) image;
         datos.setImagen(tempImage);
         ImageIcon aiuda = new ImageIcon(datos.getImagen().getScaledInstance(labelImg.getWidth(), labelImg.getHeight(), Image.SCALE_SMOOTH));
-            labelImg.setIcon(aiuda);
+        labelImg.setIcon(aiuda);
         eliminarBarra();
         this.repaint();
     }
@@ -2159,7 +2165,7 @@ tempImage = (Image) image;
         tempImage = (Image) image;
         datos.setImagen(tempImage);
         ImageIcon aiuda = new ImageIcon(datos.getImagen().getScaledInstance(labelImg.getWidth(), labelImg.getHeight(), Image.SCALE_SMOOTH));
-            labelImg.setIcon(aiuda);
+        labelImg.setIcon(aiuda);
 
         eliminarBarra();
         this.repaint();

@@ -5,23 +5,11 @@
  */
 package panel;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Image;
-import java.awt.LayoutManager;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.awt.image.MemoryImageSource;
-import java.awt.image.PixelGrabber;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import manejoDatos.dameDatos;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -88,9 +76,9 @@ public class FrameDatos extends javax.swing.JFrame {
         valBlueImg = new javax.swing.JTextField();
         Paneles = new javax.swing.JPanel();
         PanelHisto = new javax.swing.JPanel();
-        PanelRojo = new javax.swing.JPanel();
         PanelVerde = new javax.swing.JPanel();
         PanelAzul = new javax.swing.JPanel();
+        areaImg = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         actionMenuDatos = new javax.swing.JMenu();
         sizeOfImage1 = new javax.swing.JCheckBoxMenuItem();
@@ -101,7 +89,6 @@ public class FrameDatos extends javax.swing.JFrame {
         greenGrabber1 = new javax.swing.JCheckBoxMenuItem();
         blueGrabber1 = new javax.swing.JCheckBoxMenuItem();
         Histograma1 = new javax.swing.JMenu();
-        redHist1 = new javax.swing.JCheckBoxMenuItem();
         greenHist1 = new javax.swing.JCheckBoxMenuItem();
         blueHist1 = new javax.swing.JCheckBoxMenuItem();
 
@@ -206,26 +193,21 @@ public class FrameDatos extends javax.swing.JFrame {
             .addComponent(PanelAzul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout PanelRojoLayout = new javax.swing.GroupLayout(PanelRojo);
-        PanelRojo.setLayout(PanelRojoLayout);
-        PanelRojoLayout.setHorizontalGroup(
-            PanelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        PanelRojoLayout.setVerticalGroup(
-            PanelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout PanelHistoLayout = new javax.swing.GroupLayout(PanelHisto);
         PanelHisto.setLayout(PanelHistoLayout);
         PanelHistoLayout.setHorizontalGroup(
             PanelHistoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelRojo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelHistoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         PanelHistoLayout.setVerticalGroup(
             PanelHistoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelRojo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelHistoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelVerde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PanelesLayout = new javax.swing.GroupLayout(Paneles);
@@ -242,6 +224,10 @@ public class FrameDatos extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(PanelHisto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        areaImg.setEditable(false);
+        areaImg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        areaImg.setEnabled(false);
 
         actionMenuDatos.setText("Acciones");
         actionMenuDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -291,14 +277,6 @@ public class FrameDatos extends javax.swing.JFrame {
 
         Histograma1.setText("Histograma");
 
-        redHist1.setText("Rojo");
-        redHist1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                redHist1ItemStateChanged(evt);
-            }
-        });
-        Histograma1.add(redHist1);
-
         greenHist1.setText("Verde");
         greenHist1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -327,11 +305,13 @@ public class FrameDatos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(largoImg)
-                    .addComponent(sizeShow)
-                    .addComponent(anchoImg)
-                    .addComponent(showName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(largoImg)
+                        .addComponent(sizeShow)
+                        .addComponent(anchoImg)
+                        .addComponent(showName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(areaImg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -394,7 +374,10 @@ public class FrameDatos extends javax.swing.JFrame {
                         .addComponent(valBlueImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(largoImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(largoImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(areaImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Paneles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(237, 237, 237))
         );
@@ -447,10 +430,9 @@ public class FrameDatos extends javax.swing.JFrame {
     private void blueHist1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_blueHist1ItemStateChanged
         // TODO add your handling code here:
         if (blueHist1.getState() == true) {
-            redHist1.setState(false);
             greenHist1.setState(false);
             this.GeneraHistogramas(1);
-        } else if (redHist1.getState() == false && greenHist1.getState() == false && blueHist1.getState() == false) {
+        } else if (greenHist1.getState() == false && blueHist1.getState() == false) {
             Paneles.setVisible(false);
             Paneles.enable(false);
             Paneles.repaint();
@@ -462,28 +444,14 @@ public class FrameDatos extends javax.swing.JFrame {
 
         if (greenHist1.getState() == true) {
             blueHist1.setState(false);
-            redHist1.setState(false);
             this.GeneraHistogramas(2);
-        } else if (redHist1.getState() == false && greenHist1.getState() == false && blueHist1.getState() == false) {
+        } else if (greenHist1.getState() == false && blueHist1.getState() == false) {
             Paneles.setVisible(false);
             Paneles.enable(false);
             Paneles.repaint();
         }
 
     }//GEN-LAST:event_greenHist1ItemStateChanged
-
-    private void redHist1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_redHist1ItemStateChanged
-        // TODO add your handling code here:
-        if (redHist1.getState() == true) {
-            blueHist1.setState(false);
-            greenHist1.setState(false);
-            this.GeneraHistogramas(3);
-        } else if (redHist1.getState() == false && greenHist1.getState() == false && blueHist1.getState() == false) {
-            Paneles.setVisible(false);
-            Paneles.enable(false);
-            Paneles.repaint();
-        }
-    }//GEN-LAST:event_redHist1ItemStateChanged
 
     public void mouseMoved(MouseEvent evento) {
         if (Coord1.getState() == true) {
@@ -572,11 +540,11 @@ public class FrameDatos extends javax.swing.JFrame {
     private javax.swing.JMenu Histograma1;
     private javax.swing.JPanel PanelAzul;
     private javax.swing.JPanel PanelHisto;
-    private javax.swing.JPanel PanelRojo;
     private javax.swing.JPanel PanelVerde;
     private javax.swing.JPanel Paneles;
     private javax.swing.JMenu actionMenuDatos;
     private javax.swing.JTextField anchoImg;
+    private javax.swing.JTextField areaImg;
     private javax.swing.JCheckBoxMenuItem blueGrabber1;
     private javax.swing.JCheckBoxMenuItem blueHist1;
     private javax.swing.JMenu grabberOptn1;
@@ -589,7 +557,6 @@ public class FrameDatos extends javax.swing.JFrame {
     private javax.swing.JTextField posXmosue;
     private javax.swing.JTextField posYmouse;
     private javax.swing.JCheckBoxMenuItem redGrabber1;
-    private javax.swing.JCheckBoxMenuItem redHist1;
     private javax.swing.JTextField showBlueImg;
     private javax.swing.JTextField showGreenImg;
     private javax.swing.JTextField showName;
